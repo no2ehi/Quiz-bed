@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using quiz_bed.Models;
 
 namespace quiz_bed
 {
@@ -11,5 +12,7 @@ namespace quiz_bed
         public QuizContext(DbContextOptions<QuizContext> options) : base(options) { }
 
         public DbSet<Models.Question> questions { get; set; }
+
+        public DbSet<quiz_bed.Models.Quiz> Quiz { get; set; }
     }
 }
