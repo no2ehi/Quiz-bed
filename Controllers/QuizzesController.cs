@@ -28,6 +28,7 @@ namespace quiz_bed.Controllers
             return _context.Quiz;
         }
 
+
         // GET: api/Quizzes/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetQuiz([FromRoute] int id)
