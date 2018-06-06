@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -84,6 +85,7 @@ namespace quiz_bed.Controllers
         }
 
         // POST: api/Quizzes
+ 
         [HttpPost]
         public async Task<IActionResult> PostQuiz([FromBody] Quiz quiz)
         {
