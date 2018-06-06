@@ -23,8 +23,17 @@ namespace quiz_bed.Controllers
         }
 
         // GET: api/Quizzes
+        [Authorize]
         [HttpGet]
         public IEnumerable<Quiz> GetQuiz()
+        {
+            var userId = HttpContext.User.Claims.First().Value;
+
+            return _context.Quiz.Where( q => q.OwnerId == userId);
+        }
+
+        [HttpGet("all")]
+        public IEnumerable<Quiz> GetAllQuizzes()
         {
             return _context.Quiz;
         }
@@ -85,7 +94,7 @@ namespace quiz_bed.Controllers
         }
 
         // POST: api/Quizzes
- 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostQuiz([FromBody] Quiz quiz)
         {
@@ -93,6 +102,10 @@ namespace quiz_bed.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            var userId = HttpContext.User.Claims.First().Value;
+
+            quiz.OwnerId = userId;
 
             _context.Quiz.Add(quiz);
             await _context.SaveChangesAsync();

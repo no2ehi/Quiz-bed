@@ -9,5 +9,7 @@ namespace quiz_bed.Models
     {
         public int ID { get; set; }
         public string title { get; set; }
+
+        public string OwnerId { get; set; }
     }
 }
